@@ -2,15 +2,8 @@
 <!-- saved from url=(0040)https://planilhakaique.com/dashboard.php -->
 <html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Dashboard | Banca</title>
+<title>Dashboard | Ganhos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#050505">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Minha Banca">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="apple-touch-icon" href="icon-192.png">
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -1680,6 +1673,16 @@ h4.m-0.d-flex.align-items-center.gap-2 { flex-wrap: wrap; }
   .header-actions .btn:hover{ background:linear-gradient(180deg,#1d1d1d 0%,#141414 100%) !important; border-color:rgba(255,255,255,.18) !important; }
   hr{ border-color:rgba(255,255,255,.08) !important; opacity:1 !important; }
   #medalsCard{ display:none !important; }
+  #ganhosSection, #calendarSection{position:relative; overflow:hidden;}
+  #ganhosSection::before, #calendarSection::before{content:""; position:absolute; inset:0 0 auto 0; height:72px; background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,0)); pointer-events:none;}
+  .section-shell .title{display:flex; align-items:center; gap:10px; padding-bottom:10px; margin-bottom:4px; border-bottom:1px solid rgba(255,255,255,.06);}
+  .section-shell .title .muted{font-size:.92rem;}
+  .app-hero{padding:18px 20px !important;}
+  .hero-avatar{width:58px; height:58px; border-radius:18px; object-fit:cover; border:1px solid rgba(255,255,255,.10); box-shadow:0 16px 40px rgba(0,0,0,.35);}
+  .who-name{display:flex; flex-direction:column; gap:4px;}
+  .hero-subtitle{color:var(--text-soft); font-size:1.02rem; font-weight:700;}
+  #liveBannerWrap, [title="Pontuação"], #btnResgatarPontos{display:none !important;}
+
   @media (max-width:992px){ .summary-grid,.metrics-grid,.next-grid,.prev-grid{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; } }
   @media (max-width:576px){ .page{ padding:18px 14px 30px; } .summary-grid,.metrics-grid,.next-grid,.prev-grid{ grid-template-columns:1fr !important; } .header-actions{ width:100%; overflow-x:auto; flex-wrap:nowrap; padding-bottom:6px; -webkit-overflow-scrolling:touch; } .header-actions::-webkit-scrollbar{ display:none; } h4.m-0.d-flex.align-items-center.gap-3.text-center{ flex-wrap:wrap; } h4.m-0.d-flex.align-items-center.gap-3.text-center > span{ flex:0 0 100%; order:2; margin-top:8px; text-align:center; } h4.m-0.d-flex.align-items-center.gap-3.text-center > a{ order:1; } }
 </style>
@@ -1694,99 +1697,27 @@ h4.m-0.d-flex.align-items-center.gap-2 { flex-wrap: wrap; }
 
 <div class="page">
     
-  <!-- Cabeçalho do usuário + verificação -->
-  <div class="top-verify ">
-<div class="who">
-    <i class="bi bi-person-circle" style="font-size:20px; opacity:.9;"></i>
-
-<div class="who-name">
-  <span class="name">tuex</span>
-
-  
-    <a href="https://planilhakaique.com/comprar_verificado.php" class="tag" style="text-decoration:none; cursor:pointer;" title="Clique para verificar sua conta">
-      <i class="bi bi-lock-fill" style="color:#ffcc33;"></i>
-      <span class="txt">Não verificada</span>
-      
-    </a>
-
-  </div>
-</div>
-
+  <!-- Cabeçalho do usuário -->
+  <div class="top-verify app-hero">
+    <div class="who">
+      <img id="heroAvatarImg" src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20240%20240%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23191919%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23070707%22/%3E%3C/linearGradient%3E%3C/defs%3E%0A%3Crect%20width%3D%22240%22%20height%3D%22240%22%20rx%3D%2248%22%20fill%3D%22url%28%23g%29%22/%3E%0A%3Ccircle%20cx%3D%22120%22%20cy%3D%2294%22%20r%3D%2244%22%20fill%3D%22%23f5f5f5%22%20opacity%3D%220.96%22/%3E%0A%3Cpath%20d%3D%22M48%20200c16-34%2044-56%2072-56s56%2022%2072%2056%22%20fill%3D%22%23f5f5f5%22%20opacity%3D%220.96%22/%3E%0A%3C/svg%3E" alt="Avatar" class="hero-avatar">
+      <div class="who-name">
+        <span class="name">tuex</span>
+        <span class="hero-subtitle">Gerenciamento de ganhos</span>
       </div>
-  
-  
-<!-- Medalhas do mês -->
-<div class="badge-soon" id="medalsCard">
-  <div class="head">
-    <div>
-      <div class="title2">
-        <i class="bi bi-award"></i>
-        <span>Medalhas do mês</span>
-      </div>
-      <div class="sub" id="medalsSub">Carregando progresso...</div>
     </div>
-
-    <span class="chip" id="medalsChip" style="background:rgba(185,140,255,.14); border:1px solid rgba(185,140,255,.25);">
-      <i class="bi bi-stars"></i> Progresso
-    </span>
   </div>
 
-  <div class="medals-row" id="medalsRow">
-
-    <div class="medal-wrap" data-medal="20d">
-      <div class="medal locked show">
-        <img src="./Dashboard _ Banca_files/20d.png" alt="20 dias">
-      </div>
-      <div class="medal-progress" id="prog-20d">0/20</div>
-    </div>
-
-    <div class="medal-wrap" data-medal="15d">
-      <div class="medal locked show">
-        <img src="./Dashboard _ Banca_files/15d.png" alt="15 dias">
-      </div>
-      <div class="medal-progress" id="prog-15d">0/15</div>
-    </div>
-
-    <div class="medal-wrap" data-medal="7d">
-      <div class="medal locked show">
-        <img src="./Dashboard _ Banca_files/7d.png" alt="7 dias">
-      </div>
-      <div class="medal-progress" id="prog-7d">0/7</div>
-    </div>
-
-    <!-- NOVA: Medalha Stoploss -->
-    <div class="medal-wrap" data-medal="sl">
-      <div class="medal locked show">
-        <img src="./Dashboard _ Banca_files/sl.png" alt="Stoploss">
-      </div>
-      <div class="medal-progress" id="prog-sl">0/1</div>
-    </div>
-
-    <!-- NOVA: Medalha Dobrou a banca no mês (100%) -->
-    <div class="medal-wrap" data-medal="100m">
-      <div class="medal locked show">
-        <img src="./Dashboard _ Banca_files/100m.png" alt="Dobrou a banca no mês">
-      </div>
-      <div class="medal-progress" id="prog-100m">0/1</div>
-    </div>
-
-  </div>
-
-  <div class="mt-3 d-flex flex-wrap gap-2 justify-content-end" id="medalsActions" style="display:none;"></div>
-</div>
 <!-- Header -->
 <!-- ===== HEADER SUPERIOR (BOTÕES) ===== -->
 <div class="d-flex justify-content-center flex-wrap gap-3 mb-3 header-actions">
-<a class="btn btn-outline-light btn-icon" href="https://planilhakaique.com/pontuacao.php?ref=2026-03" title="Pontuação">
-  <i class="bi bi-award"></i>
-</a>
-      <button class="btn btn-outline-light btn-icon" data-bs-toggle="modal" data-bs-target="#modalConfig" title="Configuração">
+<button class="btn btn-outline-light btn-icon" data-bs-toggle="modal" data-bs-target="#modalConfig" title="Configuração">
     <i class="bi bi-gear"></i>
   </button>
     <a class="btn btn-outline-light btn-icon" href="https://planilhakaique.com/historico_evo.php" title="Catalogador">
       <i class="bi bi-collection-play"></i>
     </a>
-<a class="btn btn-outline-light btn-icon" href="https://planilhakaique.com/ganhos.php" title="Ganhos">
+<a class="btn btn-outline-light btn-icon" href="#ganhosSection" title="Ganhos">
   <i class="bi bi-wallet2"></i>
 </a>
 
@@ -1821,15 +1752,9 @@ h4.m-0.d-flex.align-items-center.gap-2 { flex-wrap: wrap; }
   </a>
 </div>
 
-<!-- Banner Live Verificada (só aparece quando aberto) -->
-<div class="sorteio-banner-wrap" id="liveBannerWrap" style="display:none;">
-  <a class="sorteio-banner" href="https://planilhakaique.com/live_verificado.php">
-    <img id="liveBannerImg" src="./Dashboard _ Banca_files/live_verificado.png" alt="Live para verificados">
-  </a>
-</div>
-  <!-- Resumo da banca -->
-  <div class="glass mb-3">
-    <div class="title"><i class="bi bi-window-stack"></i> Resumo da Banca</div>
+<!-- Resumo dos ganhos -->
+  <div class="glass mb-3 section-shell" id="ganhosSection">
+    <div class="title"><i class="bi bi-wallet2"></i> Resumo dos Ganhos</div>
     <div class="summary-grid mt-3">
       <div class="summary-card">
         <div class="muted d-flex align-items-center gap-2"><i class="bi bi-piggy-bank icon"></i> Banca Inicial do Mês</div>
@@ -1884,8 +1809,8 @@ h4.m-0.d-flex.align-items-center.gap-2 { flex-wrap: wrap; }
   </div>
 
   <!-- Calendário -->
-  <div class="glass mb-3">
-    <div class="title mb-2"><i class="bi bi-calendar3"></i> Calendário de Performance <span class="ms-2 muted">Verde: + | Vermelho: − | Cinza: sem operação</span></div>
+  <div class="glass mb-3 section-shell" id="calendarSection">
+    <div class="title mb-2"><i class="bi bi-calendar3"></i> Calendário Financeiro <span class="ms-2 muted">Entradas e saídas organizadas por dia</span></div>
     <div id="calendar" class="calendar-grid"><div class="muted text-center"><b>Dom</b></div><div class="muted text-center"><b>Seg</b></div><div class="muted text-center"><b>Ter</b></div><div class="muted text-center"><b>Qua</b></div><div class="muted text-center"><b>Qui</b></div><div class="muted text-center"><b>Sex</b></div><div class="muted text-center"><b>Sáb</b></div><div class="day positivo" data-var="10" data-iso="2026-03-01"><div class="day-num">1</div><div class="day-value pos">+R$&nbsp;10,00</div></div><div class="day semop"><div class="day-num">2</div></div><div class="day semop"><div class="day-num">3</div></div><div class="day semop"><div class="day-num">4</div></div><div class="day semop"><div class="day-num">5</div></div><div class="day semop"><div class="day-num">6</div></div><div class="day semop"><div class="day-num">7</div></div><div class="day semop"><div class="day-num">8</div></div><div class="day semop"><div class="day-num">9</div></div><div class="day semop"><div class="day-num">10</div></div><div class="day semop"><div class="day-num">11</div></div><div class="day semop"><div class="day-num">12</div></div><div class="day semop"><div class="day-num">13</div></div><div class="day semop"><div class="day-num">14</div></div><div class="day semop"><div class="day-num">15</div></div><div class="day semop"><div class="day-num">16</div></div><div class="day semop"><div class="day-num">17</div></div><div class="day semop"><div class="day-num">18</div></div><div class="day semop"><div class="day-num">19</div></div><div class="day semop"><div class="day-num">20</div></div><div class="day semop"><div class="day-num">21</div></div><div class="day semop"><div class="day-num">22</div></div><div class="day semop"><div class="day-num">23</div></div><div class="day semop"><div class="day-num">24</div></div><div class="day semop"><div class="day-num">25</div></div><div class="day semop"><div class="day-num">26</div></div><div class="day semop"><div class="day-num">27</div></div><div class="day semop"><div class="day-num">28</div></div><div class="day semop"><div class="day-num">29</div></div><div class="day semop"><div class="day-num">30</div></div><div class="day semop"><div class="day-num">31</div></div></div>
   </div>
 
@@ -2100,7 +2025,7 @@ h4.m-0.d-flex.align-items-center.gap-2 { flex-wrap: wrap; }
           <input type="number" step="0.01" class="form-control" name="stoploss_pct" value="" required="">
         </div>
       </div>
-<div class="modal-footer d-flex justify-content-between">
+<div class="modal-footer d-flex justify-content-end">
   <button type="button" class="btn btn-danger" id="btnResetMes">
     <i class="bi bi-arrow-counterclockwise"></i> Resetar Mês
   </button>
@@ -2145,41 +2070,6 @@ h4.m-0.d-flex.align-items-center.gap-2 { flex-wrap: wrap; }
   </div>
 </div>
 
-
-
-<!-- ✅ Modal: Resgatar pontos (aparece 1x por sessão) -->
-<div class="modal fade" id="modalResgatePontos" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content glass" style="border-radius:18px; overflow:hidden;">
-
-      <div class="modal-header d-flex justify-content-between align-items-center">
-        <div class="d-flex align-items-center gap-2">
-          <i class="bi bi-stars" id="resgateIcon" style="color:#ffcc33;"></i>
-          <strong id="resgateTitle">Parabéns!</strong>
-        </div>
-        <button class="btn btn-sm btn-outline-light" data-bs-dismiss="modal" aria-label="Fechar">
-          <i class="bi bi-x-lg"></i>
-        </button>
-      </div>
-
-      <div class="modal-body">
-        <div class="p-3" style="background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:16px;">
-          <div class="muted" style="font-weight:800;" id="resgateMsg">
-            Você pode resgatar os pontos dessa operação.
-          </div>
-        </div>
-      </div>
-
-      <div class="modal-footer d-flex justify-content-between">
-        <button class="btn btn-outline-light" data-bs-dismiss="modal">Agora não</button>
-        <a class="btn btn-warning" id="btnResgatarPontos" href="https://planilhakaique.com/pontuacao.php" style="font-weight:900;">
-          <i class="bi bi-gift"></i> Resgatar pontos
-        </a>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 
 <!-- Modal Usuários (apenas Admin) -->
@@ -2257,7 +2147,7 @@ h4.m-0.d-flex.align-items-center.gap-2 { flex-wrap: wrap; }
         <div class="d-flex align-items-center gap-2">
           <i class="bi bi-person-circle"></i>
           <strong>Perfil</strong>
-                      <small class="muted">• não verificado</small>
+                      
                   </div>
         <button class="btn btn-sm btn-outline-light" data-bs-dismiss="modal">
           <i class="bi bi-x-lg"></i>
@@ -2300,7 +2190,7 @@ h4.m-0.d-flex.align-items-center.gap-2 { flex-wrap: wrap; }
         </div>
 <!-- HISTÓRICO (PONTOS + MEDALHAS POR MÊS) -->
 <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
-  <div class="fw-bold"><i class="bi bi-bar-chart-steps me-1"></i> Histórico (Pontos + Medalhas)</div>
+  <div class="fw-bold"><i class="bi bi-bar-chart-steps me-1"></i> Histórico mensal</div>
   <span class="chip" id="perfilHistCount">0</span>
 </div>
 
@@ -2311,10 +2201,7 @@ h4.m-0.d-flex.align-items-center.gap-2 { flex-wrap: wrap; }
       </div>
 
       <div class="modal-footer d-flex justify-content-between">
-                  <a href="https://planilhakaique.com/comprar_verificado.php" class="btn btn-warning" style="font-weight:900;">
-            <i class="bi bi-patch-check-fill"></i> Virar verificado
-          </a>
-                <button class="btn btn-outline-light" data-bs-dismiss="modal">Fechar</button>
+                  <button class="btn btn-outline-light" data-bs-dismiss="modal">Fechar</button>
       </div>
 
     </div>
@@ -4741,8 +4628,8 @@ document.addEventListener('DOMContentLoaded', function(){
     if(monthBtns[0]) monthBtns[0].href = location.pathname + '?ref=' + prevRef;
     if(monthBtns[1]) monthBtns[1].href = location.pathname + '?ref=' + nextRef;
 
-    const pontosBtn = document.querySelector('.header-actions a[title="Pontuação"]');
-    if(pontosBtn) pontosBtn.href = '#';
+    const ganhosBtn = document.querySelector('.header-actions a[title="Ganhos"]');
+    if(ganhosBtn) ganhosBtn.href = '#ganhosSection';
   }
 
   function removeMedals(){
@@ -4770,17 +4657,5 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 })();
 </script>
-
-
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
-    navigator.serviceWorker.register('./sw.js').catch(function (err) {
-      console.warn('Service Worker não registrado:', err);
-    });
-  });
-}
-</script>
-
 
 </body></html>
